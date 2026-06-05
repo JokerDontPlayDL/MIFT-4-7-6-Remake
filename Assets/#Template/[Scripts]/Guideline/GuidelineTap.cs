@@ -44,7 +44,9 @@ namespace DancingLineFanmade.Guideline
         public void InitBox(bool auto)
         {
             if (!autoplay)
-                Player.Instance.OnTurn.AddListener(Trigger);
+            {
+                Player.Instance.OnTurn.AddListener(Trigger);//线转向时触发
+            }
             sprites.AddRange(GetComponentsInChildren<SpriteRenderer>());
             triggerEffect = Resources.Load<GameObject>("Prefabs/GuidelineTapEffect");
             spriteRenderer.material = material;
@@ -96,7 +98,7 @@ namespace DancingLineFanmade.Guideline
             var effect = Instantiate(triggerEffect, transform.position, Quaternion.Euler(-90, 0, 0)).transform;
             var component = effect.GetComponent<SpriteRenderer>();
             component.DOFade(0f, 0.75f).WaitForCompletion();
-            effect.DOScale(7.5f, 0.75f).WaitForCompletion();
+            effect.DOScale(7.5f, 0.75f).WaitForCompletion();//点击效果消散动画
             yield return new WaitForSeconds(0.75f);
             Destroy(effect.gameObject);
             yield return null;
@@ -105,16 +107,16 @@ namespace DancingLineFanmade.Guideline
         private void OnTriggerEnter(Collider other)
         {
             if (!autoplay || autoplayCollider == null || !other.CompareTag("Player") || triggered ||
-                Player.Instance.Falling)
+                Player.Instance.Falling)//判断条件
                 return;
-            var playerPosition = Player.Instance.transform.position;
-            var position = transform.position;
-            var normalizedPlayerPosition = new Vector3(playerPosition.x, 0, playerPosition.z);
-            var normalizedPosition = new Vector3(position.x, 0, position.z);
-            var time = Mathf.Abs((normalizedPlayerPosition - normalizedPosition).magnitude) / Player.Instance.Speed;
+            var playerPosition = Player.Instance.transform.position;//线的位置
+            var position = transform.position;//引导框的位置
+            var normalizedPlayerPosition = new Vector3(playerPosition.x, 0, playerPosition.z);//线的二维方位
+            var normalizedPosition = new Vector3(position.x, 0, position.z);//自身二维方位
+            var time = Mathf.Abs((normalizedPlayerPosition - normalizedPosition).magnitude) / Player.Instance.Speed;//计算从线进入引导框触发器到触发的时间
             if (time > 0)
                 Invoke(nameof(TurnPlayer), time);
-            else TurnPlayer();
+            else TurnPlayer();//等待转向
         }
 
         private void TurnPlayer()

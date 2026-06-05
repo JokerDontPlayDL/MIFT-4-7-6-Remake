@@ -20,7 +20,7 @@ namespace DancingLineFanmade.Trigger
         [SerializeField, DrawWithUnity] private Ease ease = Ease.InOutSine;
         [SerializeField] private bool useCurve;
         [SerializeField] private AnimationCurve curve = LevelManager.linearCurve;
-        [SerializeField, DrawWithUnity] private RotateMode mode = RotateMode.FastBeyond360;
+        [SerializeField, DrawWithUnity] private RotateMode mode = RotateMode.Fast;
         [SerializeField] private bool canBeTriggered = true;
 
         private PreviewCamera previewCamera;

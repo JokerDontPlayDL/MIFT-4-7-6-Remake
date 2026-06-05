@@ -11,14 +11,16 @@ namespace DancingLineFanmade.Guideline
         [Title("Guideline Generator Setting"), SerializeField]
         internal Transform guidelineTapHolder;
 
+        [Title("Guideline Setting")]
         [SerializeField] internal List<Color> colors;
         [SerializeField, Min(0f)] internal float lineGap = 0.2f;
+
+        [Title("AutoPlay Setting")]
         [SerializeField] internal bool autoplay;
-        [SerializeField] internal Vector3 autoplayTriggerSize = new(0.5f, 0.5f, 3f);
+        [SerializeField, ShowIf("autoplay")] internal Vector3 autoplayTriggerSize = new(0.5f, 0.5f, 3f);
 
         [Title("Road Generator Setting"), SerializeField]
         private GameObject roadPrefab;
-
         [SerializeField] private float width = 2f;
         [SerializeField] private Vector3 offset;
 
