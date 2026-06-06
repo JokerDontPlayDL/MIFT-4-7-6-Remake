@@ -17,6 +17,8 @@ namespace DancingLineFanmade.Guideline
 
         [Title("AutoPlay Setting")]
         [SerializeField] internal bool autoplay;
+        [SerializeField, ShowIf("autoplay")] internal bool visibleGuideLine = true;
+        [SerializeField, ShowIf("autoplay")] internal bool showAutoEffect;
         [SerializeField, ShowIf("autoplay")] internal Vector3 autoplayTriggerSize = new(0.5f, 0.5f, 3f);
 
         [Title("Road Generator Setting"), SerializeField]
@@ -31,15 +33,16 @@ namespace DancingLineFanmade.Guideline
 
         private void Start()
         {
+            if (!autoplay) visibleGuideLine = false;
             if (!guidelineTapHolder)
                 return;
-            boxes.AddRange(guidelineTapHolder.GetComponentsInChildren<GuidelineTap>());
+            boxes.AddRange(guidelineTapHolder.GetComponentsInChildren<GuidelineTap>());//获取所有在Holder下的引导框
             linePrefab = Resources.Load<GameObject>("Prefabs/Guideline");
             for (var i = 0; i < boxes.Count; i++)
             {
                 if (i < boxes.Count - 1 && boxes[i].haveLine)
                     GenerateLine(boxes[i].transform, boxes[i + 1].transform);
-                boxes[i].InitBox(autoplay);
+                boxes[i].InitBox(autoplay, visibleGuideLine);
                 boxes[i].SetColor(colors);
                 if (autoplay)
                     boxes[i].AddBoxCollider(autoplayTriggerSize);
@@ -48,6 +51,12 @@ namespace DancingLineFanmade.Guideline
             SetUseGuideline();
             if (autoplay)
                 Player.Instance.disallowInput = true;
+
+            foreach(GuidelineTap tap in boxes)
+            {
+                tap.useEffect = showAutoEffect;
+                tap.visibleGuideLine = visibleGuideLine;
+            }
         }
 
         private void GenerateLine(Transform box1, Transform box2)
@@ -77,11 +86,11 @@ namespace DancingLineFanmade.Guideline
             guidelineTapHolder.gameObject.SetActive(useGuideline);
         }
 
-        public void ResetAllTaps(float time)
+        public void ResetAllTaps(float time)//复活重置引导线
         {
             foreach (var VARIABLE in boxes)
             {
-                VARIABLE.InitBox(false);
+                VARIABLE.InitBox(false, false);
                 VARIABLE.triggered = false;
                 if (!(time > VARIABLE.displayTime))
                     continue;

@@ -20,12 +20,15 @@ namespace DancingLineFanmade.Guideline
         [SerializeField] internal bool triggered;
 
         private GameObject triggerEffect;
+        private GameObject autoEffect;
         private BoxCollider autoplayCollider;
         private readonly List<SpriteRenderer> sprites = new();
         private const float timeOffset = 0.25f;
 
         internal bool autoplay;
         internal bool noEffect;
+        internal bool useEffect;
+        internal bool visibleGuideLine = true;
 
         private float Distance => (transform.position - Player.Instance.transform.position).sqrMagnitude;
 
@@ -39,9 +42,13 @@ namespace DancingLineFanmade.Guideline
             if (AudioManager.Time > displayTime && !spriteRenderer.enabled && !triggered &&
                 LevelManager.GameState == GameStatus.Playing)
                 SetDisplay(true);
+            if (autoplay)
+            {
+                SetDisplay(visibleGuideLine);
+            }
         }
 
-        public void InitBox(bool auto)
+        public void InitBox(bool auto, bool visible)
         {
             if (!autoplay)
             {
@@ -49,10 +56,12 @@ namespace DancingLineFanmade.Guideline
             }
             sprites.AddRange(GetComponentsInChildren<SpriteRenderer>());
             triggerEffect = Resources.Load<GameObject>("Prefabs/GuidelineTapEffect");
+            autoEffect = Resources.Load<GameObject>("Prefabs/AutoEffect");
             spriteRenderer.material = material;
             spriteRenderer.sprite = sprite;
             autoplay = auto;
             noEffect = auto;
+
             if (displayTime <= 0)
             {
                 displayTime = 0f;
@@ -104,7 +113,18 @@ namespace DancingLineFanmade.Guideline
             yield return null;
         }
 
-        private void OnTriggerEnter(Collider other)
+        public IEnumerator AutoTurnMark()
+        {
+            var mark = Instantiate(autoEffect, transform.position, Quaternion.Euler(-90, 0, 0)).transform;
+            var sprite = mark.GetComponent<SpriteRenderer>();
+            sprite.DOFade(0, 0.75f).WaitForCompletion();
+            mark.DOScale(7.5f, 0.75f).WaitForCompletion();
+            yield return new WaitForSeconds(0.75f);
+            Destroy(mark.gameObject);
+            yield return null;
+        }
+
+        private void OnTriggerEnter(Collider other)//这里主要是自动播放转向
         {
             if (!autoplay || autoplayCollider == null || !other.CompareTag("Player") || triggered ||
                 Player.Instance.Falling)//判断条件
@@ -122,6 +142,12 @@ namespace DancingLineFanmade.Guideline
         private void TurnPlayer()
         {
             Player.Instance.Turn();
+            if (useEffect)
+            {
+                StartCoroutine(AutoTurnMark());
+                SetDisplay(false);
+            }
+
         }
     }
 }

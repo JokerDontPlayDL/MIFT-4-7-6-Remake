@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\DLFM_Progams\\MIFT-4-7-6-Remake\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{39DC1336-ECD6-CE75-6E73-BC4B503B1E20}|Assembly-CSharp.csproj|d:\\dlfm_progams\\mift-4-7-6-remake\\assets\\#template\\[scripts]\\guideline\\guidelinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{39DC1336-ECD6-CE75-6E73-BC4B503B1E20}|Assembly-CSharp.csproj|solutionrelative:assets\\#template\\[scripts]\\guideline\\guidelinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{39DC1336-ECD6-CE75-6E73-BC4B503B1E20}|Assembly-CSharp.csproj|d:\\dlfm_progams\\mift-4-7-6-remake\\assets\\#template\\[scripts]\\guideline\\guidelinetap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{39DC1336-ECD6-CE75-6E73-BC4B503B1E20}|Assembly-CSharp.csproj|solutionrelative:assets\\#template\\[scripts]\\guideline\\guidelinetap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39DC1336-ECD6-CE75-6E73-BC4B503B1E20}|Assembly-CSharp.csproj|D:\\DLFM_Progams\\MIFT-4-7-6-Remake\\assets\\#template\\[scripts]\\guideline\\guidelinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39DC1336-ECD6-CE75-6E73-BC4B503B1E20}|Assembly-CSharp.csproj|solutionrelative:assets\\#template\\[scripts]\\guideline\\guidelinemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,33 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "GuidelineTap.cs",
               "DocumentMoniker": "D:\\DLFM_Progams\\MIFT-4-7-6-Remake\\Assets\\#Template\\[Scripts]\\Guideline\\GuidelineTap.cs",
               "RelativeDocumentMoniker": "Assets\\#Template\\[Scripts]\\Guideline\\GuidelineTap.cs",
               "ToolTip": "D:\\DLFM_Progams\\MIFT-4-7-6-Remake\\Assets\\#Template\\[Scripts]\\Guideline\\GuidelineTap.cs",
               "RelativeToolTip": "Assets\\#Template\\[Scripts]\\Guideline\\GuidelineTap.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAA1wDYAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAAIMAAAAAAAAAAAAYwFgAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-06-05T12:39:35.916Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "GuidelineManager.cs",
               "DocumentMoniker": "D:\\DLFM_Progams\\MIFT-4-7-6-Remake\\Assets\\#Template\\[Scripts]\\Guideline\\GuidelineManager.cs",
               "RelativeDocumentMoniker": "Assets\\#Template\\[Scripts]\\Guideline\\GuidelineManager.cs",
               "ToolTip": "D:\\DLFM_Progams\\MIFT-4-7-6-Remake\\Assets\\#Template\\[Scripts]\\Guideline\\GuidelineManager.cs",
               "RelativeToolTip": "Assets\\#Template\\[Scripts]\\Guideline\\GuidelineManager.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAQwBYAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAACsAAAAAAAAAAAAQwDsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-06-05T12:31:05.09Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-06-05T12:31:05.09Z"
             }
           ]
         }
