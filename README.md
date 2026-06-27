@@ -14,17 +14,7 @@
   <br>如果您没有Github账号：在显示仓库目录的上方有一个“Code”，点击并选择“Download ZIP”，就可以将模板下载到本地
 </p>
 
-### 我们增加的功能
-<p>
-  1.加入了皇冠存档点(CrownCheckpoint)
-  <br>2.添加脚本："Clear Tail"(DancingLineFanmade.Trigger)
-</p>
-
-### 我们修改的地方
-<p>
-  1.模板的原有存档点改为爱心存档点(HeartCheckpoint),并且修改了相关代码，皇冠存档点将依赖于Checkpoint脚本。<br>
-  2.优化了关于引导线(DancingLineFanmade.Guideline)的相关代码并加入了一些功能
-  3.其他小优化
-</p>
+### 最近更新
+1.滚木
 
 <p style="font-size:10px"> <a href="https://jokerdontplaydl.github.io/MIFT4-7-6_Remake">模板相关</a> </p>
