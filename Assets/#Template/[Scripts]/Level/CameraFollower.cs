@@ -26,7 +26,7 @@ namespace DancingLineFanmade.Level
         private Tween OffsetTween { get; set; }
         private Tween RotationTween { get; set; }
         private Tween ScaleTween { get; set; }
-        private Tween ShakeTween { get; set; }
+        internal Tween ShakeTween { get; set; }
         private Tween FovTween { get; set; }
         private float ShakePower { get; set; }
         private Quaternion Rotation { get; set; }
