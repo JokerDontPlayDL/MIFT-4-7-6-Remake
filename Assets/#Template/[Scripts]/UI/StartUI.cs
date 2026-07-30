@@ -17,7 +17,7 @@ namespace DancingLineFanmade.UI
             {
                 if (l.GetComponent<Button>())
                     l.GetComponent<Button>().interactable = false;
-                l.DOAnchorPos(new Vector2(-120f, l.anchoredPosition.y), 0.4f).SetEase(Ease.InSine)
+                l.DOAnchorPos(new Vector2(-120f, l.anchoredPosition.y), 0.5f).SetEase(Ease.Linear)
                     .OnComplete(() => { Destroy(gameObject); });
             }
 
@@ -25,7 +25,7 @@ namespace DancingLineFanmade.UI
             {
                 if (d.GetComponent<Button>())
                     d.GetComponent<Button>().interactable = false;
-                d.DOAnchorPos(new Vector2(d.anchoredPosition.x, -400f), 0.5f).SetEase(Ease.InSine)
+                d.DOAnchorPos(new Vector2(d.anchoredPosition.x, -400f), 0.5f).SetEase(Ease.Linear)
                     .OnComplete(() => { Destroy(gameObject); });
             }
         }

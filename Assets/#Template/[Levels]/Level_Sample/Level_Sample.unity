@@ -642,7 +642,7 @@ MonoBehaviour:
   visibleGuideLine: 1
   showAutoEffect: 1
   autoplayTriggerSize: {x: 0.5, y: 0.5, z: 2}
-  roadPrefab: {fileID: 0}
+  roadPrefab: {fileID: 1378278814}
   width: 2
   offset: {x: 0, y: 0.6, z: 0}
 --- !u!114 &931181847
@@ -658,7 +658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 535452380}
-  beatmap: {fileID: 0}
+  beatmap: {fileID: 4900000, guid: 037d5c4655cd3ea4f86ed56d2540b686, type: 3}
   offset: 0
   hitTime: []
 --- !u!114 &931181848

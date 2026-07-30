@@ -58,6 +58,8 @@ namespace DancingLineFanmade.Guideline
                 tap.visibleGuideLine = visibleGuideLine;
             }
         }
+        
+        
 
         private void GenerateLine(Transform box1, Transform box2)
         {

@@ -6,7 +6,6 @@ using UnityEngine;
 
 namespace DancingLineFanmade.Guideline
 {
-    [DisallowMultipleComponent]
     public class BeatmapReader : MonoBehaviour
     {
         [SerializeField] private Player player;

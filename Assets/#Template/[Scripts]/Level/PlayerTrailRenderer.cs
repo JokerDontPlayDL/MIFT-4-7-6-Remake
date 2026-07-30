@@ -16,7 +16,9 @@ namespace DancingLineFanmade.Level
         [SerializeField] private int maxDistance = 36000;
         [SerializeField] private Color trailColor = Color.blue;
         [SerializeField] private Vector3 trailOffset = new(0f, 0.4f, 0f);
+
         [SerializeField] private bool renderTrail;
+
         [SerializeField] private bool renderTime;
 
         private List<Transform> trans = new();
