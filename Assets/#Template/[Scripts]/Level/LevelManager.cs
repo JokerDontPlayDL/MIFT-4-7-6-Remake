@@ -149,6 +149,7 @@ namespace DancingLineFanmade.Level
                 GameOverNormal(false);
             else GameOverRevive();
             Cursor.visible = true;
+            player.CrownCount = 0;
         }
 
         public static void GameOverNormal(bool complete)

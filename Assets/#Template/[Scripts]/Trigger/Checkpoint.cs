@@ -144,7 +144,7 @@ namespace DancingLineFanmade.Trigger
                     Player.Instance.characterRigidbody.isKinematic = true;
 
                     var manager = FindObjectOfType<GuidelineManager>();
-                    if (manager.useGuideline)
+                    if (manager.UseGuideline)
                         manager.ResetAllTaps(soundtrackTime);
                 },
                 () =>

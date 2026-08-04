@@ -39,7 +39,7 @@ namespace DancingLineFanmade.Trigger
             crownColor = crownRenderer.material.color;
             iconPos = crownIcon.transform.position;
 
-            iconRenderer.color = new Color(crownColor.r, crownColor.g, crownColor.b, 0f);
+            iconRenderer.color = new Color(iconRenderer.color.r, iconRenderer.color.g, iconRenderer.color.b, 0f);
             targetPos = iconPos + Vector3.up * 5f;
 
             InitParticles();

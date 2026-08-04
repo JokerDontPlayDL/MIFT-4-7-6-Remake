@@ -14,7 +14,11 @@
   <br>如果您没有Github账号：在显示仓库目录的上方有一个“Code”，点击并选择“Download ZIP”，就可以将模板下载到本地
 </p>
 
-### 最近更新
-1.滚木
+### 最近更新 2026/8/4
+1.将player、CameraRoot作为预制体存放在#Template/下。
+2.修复了一些问题。
 
-<p style="font-size:10px"> <a href="https://jokerdontplaydl.github.io/MIFT4-7-6_Remake">模板相关</a> </p>
+<p style="font-size:10px">
+<a href="https://jokerdontplaydl.github.io/MIFT4-7-6_Remake">模板相关</a> | 
+<a href="https://maxiceflame.github.io/tutorial">关于冰焰模板4.7.6</a>
+</p>

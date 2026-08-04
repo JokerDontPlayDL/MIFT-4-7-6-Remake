@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using DancingLineFanmade.Level;
 using DG.Tweening;
-using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace DancingLineFanmade.Guideline
@@ -24,12 +23,12 @@ namespace DancingLineFanmade.Guideline
         private GameObject autoEffect;
         private BoxCollider autoplayCollider;
         private readonly List<SpriteRenderer> sprites = new();
-        private const float timeOffset = 0.25f;
+        private const float TimeOffset = 0.25f;
 
-        internal bool autoplay;
-        internal bool noEffect;
-        internal bool useEffect;
-        internal bool visibleGuideLine = true;
+        internal bool Autoplay;
+        internal bool NoEffect;
+        internal bool UseEffect;
+        internal bool VisibleGuideLine = true;
 
         private float Distance => (transform.position - Player.Instance.transform.position).sqrMagnitude;
 
@@ -43,15 +42,20 @@ namespace DancingLineFanmade.Guideline
             if (AudioManager.Time > displayTime && !spriteRenderer.enabled && !triggered &&
                 LevelManager.GameState == GameStatus.Playing)
                 SetDisplay(true);
-            if (autoplay)
+            if (Autoplay)
             {
-                SetDisplay(visibleGuideLine);
+                SetDisplay(VisibleGuideLine);
+            }
+
+            if (AudioManager.Time > triggerTime)
+            {
+                AnimateLine();
             }
         }
 
         public void InitBox(bool auto, bool visible)
         {
-            if (!autoplay)
+            if (!Autoplay)
             {
                 Player.Instance.OnTurn.AddListener(Trigger);//线转向时触发
             }
@@ -60,8 +64,8 @@ namespace DancingLineFanmade.Guideline
             autoEffect = Resources.Load<GameObject>("Prefabs/AutoEffect");
             spriteRenderer.material = material;
             spriteRenderer.sprite = sprite;
-            autoplay = auto;
-            noEffect = auto;
+            Autoplay = auto;
+            NoEffect = auto;
 
             if (displayTime <= 0)
             {
@@ -81,11 +85,11 @@ namespace DancingLineFanmade.Guideline
 
         private void Trigger()
         {
-            if (!(Distance <= triggerDistance) || !(Mathf.Abs(AudioManager.Time - triggerTime) <= timeOffset) ||
+            if (!(Distance <= triggerDistance) || !(Mathf.Abs(AudioManager.Time - triggerTime) <= TimeOffset) ||
                 triggered)
                 return;
             triggered = true;
-            if (noEffect)
+            if (NoEffect)
                 return;
             SetDisplay(false);
             StartCoroutine(DisplayEffect());
@@ -94,17 +98,17 @@ namespace DancingLineFanmade.Guideline
 
         public void SetDisplay(bool active)
         {
-            foreach (var VARIABLE in sprites)
+            foreach (var variable in sprites)
             {
-                VARIABLE.enabled = active;
+                variable.enabled = active;
             }
         }
 
         public IEnumerator DisplayEffect()
         {
-            var color = Color.white;
-            var scale = transform.localScale;
-            var scaleVector = Vector3.one * 1.05f;
+            // var color = Color.white;
+            // var scale = transform.localScale;
+            // var scaleVector = Vector3.one * 1.05f;
             var effect = Instantiate(triggerEffect, transform.position, Quaternion.Euler(-90, 0, 0)).transform;
             var component = effect.GetComponent<SpriteRenderer>();
             component.DOFade(0f, 0.75f).WaitForCompletion();
@@ -127,7 +131,7 @@ namespace DancingLineFanmade.Guideline
 
         private void OnTriggerEnter(Collider other)//这里主要是自动播放转向
         {
-            if (!autoplay || autoplayCollider == null || !other.CompareTag("Player") || triggered ||
+            if (!Autoplay || autoplayCollider == null || !other.CompareTag("Player") || triggered ||
                 Player.Instance.Falling)//判断条件
                 return;
             var playerPosition = Player.Instance.transform.position;//线的位置
@@ -143,12 +147,17 @@ namespace DancingLineFanmade.Guideline
         private void TurnPlayer()
         {
             Player.Instance.Turn();
-            if (useEffect)
+            if (UseEffect)
             {
                 StartCoroutine(AutoTurnMark());
                 SetDisplay(false);
             }
 
+        }
+
+        private void AnimateLine()
+        {
+            var line = transform.GetChild(0);
         }
     }
 }

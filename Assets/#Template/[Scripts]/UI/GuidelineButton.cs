@@ -48,7 +48,7 @@ namespace DancingLineFanmade.Guideline
 
         private void SetGuideline(bool use)
         {
-            manager.useGuideline = use;
+            manager.UseGuideline = use;
             manager.SetUseGuideline();
             image.sprite = use ? on : off;
         }

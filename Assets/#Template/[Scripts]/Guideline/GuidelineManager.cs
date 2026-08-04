@@ -13,7 +13,8 @@ namespace DancingLineFanmade.Guideline
 
         [Title("Guideline Setting")]
         [SerializeField] internal List<Color> colors;
-        [SerializeField, Min(0f)] internal float lineGap = 0.2f;
+
+        private float lineGap = 0.2f;
 
         [Title("AutoPlay Setting")]
         [SerializeField] internal bool autoplay;
@@ -29,7 +30,7 @@ namespace DancingLineFanmade.Guideline
         private GameObject linePrefab;
         private readonly List<GuidelineTap> boxes = new();
 
-        internal bool useGuideline;
+        internal bool UseGuideline;
 
         private void Start()
         {
@@ -54,12 +55,10 @@ namespace DancingLineFanmade.Guideline
 
             foreach(GuidelineTap tap in boxes)
             {
-                tap.useEffect = showAutoEffect;
-                tap.visibleGuideLine = visibleGuideLine;
+                tap.UseEffect = showAutoEffect;
+                tap.VisibleGuideLine = visibleGuideLine;
             }
         }
-        
-        
 
         private void GenerateLine(Transform box1, Transform box2)
         {
@@ -84,23 +83,23 @@ namespace DancingLineFanmade.Guideline
         {
             if (!guidelineTapHolder)
                 return;
-            guidelineTapHolder.position = useGuideline ? Vector3.zero : Vector3.one * -99999f;
-            guidelineTapHolder.gameObject.SetActive(useGuideline);
+            guidelineTapHolder.position = UseGuideline ? Vector3.zero : Vector3.one * -99999f;
+            guidelineTapHolder.gameObject.SetActive(UseGuideline);
         }
 
         public void ResetAllTaps(float time)//复活重置引导线
         {
-            foreach (var VARIABLE in boxes)
+            foreach (var variable in boxes)
             {
-                VARIABLE.InitBox(false, false);
-                VARIABLE.triggered = false;
-                if (!(time > VARIABLE.displayTime))
+                variable.InitBox(false, false);
+                variable.triggered = false;
+                if (!(time > variable.displayTime))
                     continue;
-                VARIABLE.SetDisplay(true);
-                if (!(VARIABLE.triggerTime < time))
+                variable.SetDisplay(true);
+                if (!(variable.triggerTime < time))
                     continue;
-                VARIABLE.SetDisplay(false);
-                VARIABLE.triggered = true;
+                variable.SetDisplay(false);
+                variable.triggered = true;
             }
         }
 

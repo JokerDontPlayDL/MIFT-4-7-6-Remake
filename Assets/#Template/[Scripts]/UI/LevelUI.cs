@@ -110,34 +110,33 @@ namespace DancingLineFanmade.UI
                 percentage.text = $"{(int)(percent * 100f)}%";
                 block.text = $"{blockCount}/{player.BlockLimit}";
                 title.text = player.levelData.levelTitle;
-                //Debug.Log($"Crown Count: {crownCount}");
+                Debug.Log($"Crown Count: {crownCount}");
                 if(!player.HaveCrown)
                 {
                     crownGroup.SetActive(false);
                 }
-                if (crownCount == 0)
+                switch (crownCount)
                 {
-                    Crown1.SetActive(false);
-                    Crown2.SetActive(false);
-                    Crown3.SetActive(false);
-                }
-                if (crownCount == 1)
-                {
-                    Crown1.SetActive(true);
-                    Crown2.SetActive(false);
-                    Crown3.SetActive(false);
-                }
-                if (crownCount == 2)
-                {
-                    Crown1.SetActive(true);
-                    Crown2.SetActive(true);
-                    Crown3.SetActive(false);
-                }
-                if (crownCount >= 3)
-                {
-                    Crown1.SetActive(true);
-                    Crown2.SetActive(true);
-                    Crown3.SetActive(true);
+                    case 1:
+                        Crown1.SetActive(true);
+                        Crown2.SetActive(false);
+                        Crown3.SetActive(false);
+                        break;
+                    case 2:
+                        Crown1.SetActive(true);
+                        Crown2.SetActive(true);
+                        Crown3.SetActive(false);
+                        break;
+                    case  3:
+                        Crown1.SetActive(true);
+                        Crown2.SetActive(true);
+                        Crown3.SetActive(true);
+                        break;
+                    default:
+                        Crown1.SetActive(false);
+                        Crown2.SetActive(false);
+                        Crown3.SetActive(false);
+                        break;
                 }
             }
             else
