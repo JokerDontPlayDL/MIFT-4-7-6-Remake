@@ -19,6 +19,8 @@
 2.修复了一些问题。
 
 <p style="font-size:10px">
-<a href="https://jokerdontplaydl.github.io/MIFT4-7-6_Remake">模板相关</a> | 
-<a href="https://maxiceflame.github.io/tutorial">关于冰焰模板4.7.6</a>
+<center>
+  <a href="https://jokerdontplaydl.github.io/MIFT4-7-6_Remake">模板相关</a> | 
+  <a href="https://maxiceflame.github.io/tutorial">关于冰焰模板4.7.6</a>
+</center>
 </p>
