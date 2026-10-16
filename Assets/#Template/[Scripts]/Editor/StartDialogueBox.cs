@@ -1,7 +1,7 @@
-using UnityEngine;
 using UnityEditor;
+using UnityEngine;
 
-namespace DancingLineFanmade.Editor
+namespace _Template._Scripts_.Editor
 {
     public static class StartDialogueBox
     {

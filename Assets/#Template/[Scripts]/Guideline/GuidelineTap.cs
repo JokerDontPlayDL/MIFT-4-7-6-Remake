@@ -157,7 +157,7 @@ namespace DancingLineFanmade.Guideline
 
         private void AnimateLine()
         {
-            var line = transform.GetChild(0);
+            //var line = transform.GetChild(0);（功能未完善喵）
         }
     }
 }

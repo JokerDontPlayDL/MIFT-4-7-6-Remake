@@ -17,6 +17,8 @@ namespace DancingLineFanmade.Trigger
 
         private Transform revivePosition;
 
+        [SerializeField] private bool enabledRevive = true;
+
         [SerializeField, Title("Player"), EnumToggleButtons]
         private Direction direction = Direction.First;
 
@@ -70,7 +72,7 @@ namespace DancingLineFanmade.Trigger
         private List<PlayAnimator> animators = new();
         private List<FakePlayer> fakes = new();
 
-        private void Start()
+        protected virtual void Start()
         {
             player = Player.Instance;
 
@@ -83,6 +85,7 @@ namespace DancingLineFanmade.Trigger
 
         internal void EnterTrigger()
         {
+            if (!enabledRevive) return;
             player.Checkpoints.Add(this);
 
             if (!manualCamera && CameraFollower.Instance)
@@ -133,8 +136,9 @@ namespace DancingLineFanmade.Trigger
             player.GetTimelineProgresses();
         }
 
-        internal void Revival()
+        internal virtual void Revival()
         {
+            Debug.Log("存档点");
             DOTween.Clear();
             LevelUI.Instance.HideScreen(fog.fogColor, 0.32f, () =>
                 {
@@ -152,16 +156,6 @@ namespace DancingLineFanmade.Trigger
                     Player.Instance.characterRigidbody.isKinematic = false;
                     player.allowTurn = true;
                 });
-
-            Crown targetCrown = transform.GetComponent<Crown>();
-            if (targetCrown == null)
-            {
-                return;
-            }
-            if (targetCrown != null)
-            {
-                targetCrown.Revival();
-            }
         }
 
         private void ResetScene()

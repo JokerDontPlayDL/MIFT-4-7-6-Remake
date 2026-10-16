@@ -2,40 +2,43 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
-public class Tool_FastScreenShot : EditorWindow
+namespace _Template._Scripts_.Editor
 {
-    private static string directory = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop) + "\\Screen Shot";
-    private static string latestScreenshotPath = "";
-
-    [MenuItem("PIXEL/Screen Capture/´ò¿ª´æ´¢ÎÄ¼þ¼Ð &2", false, 2)]
-    private static void ShowFolder()
+    public class Tool_FastScreenShot : EditorWindow
     {
-        if (File.Exists(latestScreenshotPath))
+        private static string directory = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop) + "\\Screen Shot";
+        private static string latestScreenshotPath = "";
+
+        [MenuItem("PIXEL/Screen Capture/ï¿½ò¿ª´æ´¢ï¿½Ä¼ï¿½ï¿½ï¿½ &2", false, 2)]
+        private static void ShowFolder()
         {
-            EditorUtility.RevealInFinder(latestScreenshotPath);
-            return;
+            if (File.Exists(latestScreenshotPath))
+            {
+                EditorUtility.RevealInFinder(latestScreenshotPath);
+                return;
+            }
+
+            Directory.CreateDirectory(directory);
+            EditorUtility.RevealInFinder(directory);
         }
 
-        Directory.CreateDirectory(directory);
-        EditorUtility.RevealInFinder(directory);
-    }
+        [MenuItem("PIXEL/Screen Capture/ï¿½ï¿½Í¼ &1", false, 1)]
+        private static void TakeScreenshot()
+        {
+            Directory.CreateDirectory(directory);
+            var currentTime = System.DateTime.Now;
+            var filename = currentTime.ToString().Replace('/', '-').Replace(':', '_') + ".png";
+            var path = directory + "\\" + filename;
+            ScreenCapture.CaptureScreenshot(path);
+            latestScreenshotPath = path;
+            Debug.Log($"ï¿½ï¿½Í¼Â·ï¿½ï¿½: <b>{path}</b> ï¿½Ö±ï¿½ï¿½Ê£ï¿½ <b>{GetResolution()}</b>");
+        }
 
-    [MenuItem("PIXEL/Screen Capture/½ØÍ¼ &1", false, 1)]
-    private static void TakeScreenshot()
-    {
-        Directory.CreateDirectory(directory);
-        var currentTime = System.DateTime.Now;
-        var filename = currentTime.ToString().Replace('/', '-').Replace(':', '_') + ".png";
-        var path = directory + "\\" + filename;
-        ScreenCapture.CaptureScreenshot(path);
-        latestScreenshotPath = path;
-        Debug.Log($"½ØÍ¼Â·¾¶: <b>{path}</b> ·Ö±æÂÊ£º <b>{GetResolution()}</b>");
-    }
-
-    private static string GetResolution()
-    {
-        Vector2 size = Handles.GetMainGameViewSize();
-        Vector2Int sizeInt = new Vector2Int((int)size.x, (int)size.y);
-        return $"{sizeInt.x}x{sizeInt.y}";
+        private static string GetResolution()
+        {
+            Vector2 size = Handles.GetMainGameViewSize();
+            Vector2Int sizeInt = new Vector2Int((int)size.x, (int)size.y);
+            return $"{sizeInt.x}x{sizeInt.y}";
+        }
     }
 }

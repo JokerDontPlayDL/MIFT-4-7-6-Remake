@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 533166035383947632}
-  - component: {fileID: 2650429750995376191}
   m_Layer: 0
   m_Name: Rotator
   m_TagString: Untagged
@@ -30,22 +29,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 499232200191475742}
   - {fileID: 2891315283082244211}
+  - {fileID: 499232200191475742}
   m_Father: {fileID: 66593924811911347}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2650429750995376191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 533166035383947639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cdf248f275f4574ebbf5ce1fc8fc9c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &555619824945676824
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 66593924811911347}
-  - component: {fileID: 839717366704941578}
+  - component: {fileID: 7683624216535659018}
   m_Layer: 0
   m_Name: HeartCheckpoint
   m_TagString: Untagged
@@ -171,7 +158,7 @@ Transform:
   - {fileID: 347170331142331029}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &839717366704941578
+--- !u!114 &7683624216535659018
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,7 +167,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 839717366704941577}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87fc28bfc726a5444904bfc865c58889, type: 3}
+  m_Script: {fileID: 11500000, guid: 60f02277501e4685865237526b0dc3b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
@@ -220,6 +207,9 @@ MonoBehaviour:
   onRevive:
     m_PersistentCalls:
       m_Calls: []
+  rotator: {fileID: 533166035383947632}
+  frame: {fileID: 2891315283082244211}
+  heart: {fileID: 499232200191475742}
 --- !u!1 &6032378458756758833
 GameObject:
   m_ObjectHideFlags: 0

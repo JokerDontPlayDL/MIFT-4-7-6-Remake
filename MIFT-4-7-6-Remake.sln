@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{3613dc39-d6ec-75ce-6e73-bc4b503b1e20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sirenix.OdinInspector.CompatibilityLayer.Editor", "Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj", "{289ae265-334e-33e6-5aef-38f1e9dace3e}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{1f194c7e-9ffc-4e90-840a-2d35a67ed56e}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{f90b9dbf-e0c7-0d23-207c-6ae1108c8b3f}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sirenix.OdinInspector.CompatibilityLayer", "Sirenix.OdinInspector.CompatibilityLayer.csproj", "{e7d62400-3ad3-8c46-6ef2-e4d958fb7b2b}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.Player.csproj", "{01138b5a-a439-169f-10ea-9b5cb3140889}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.Player.csproj", "{8614f403-0dba-4040-f8ed-c2c7e2451b1b}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sirenix.OdinInspector.CompatibilityLayer", "Sirenix.OdinInspector.CompatibilityLayer.Player.csproj", "{5428bf55-b24c-0935-cc3f-abadaf15dc5f}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3613dc39-d6ec-75ce-6e73-bc4b503b1e20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3613dc39-d6ec-75ce-6e73-bc4b503b1e20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{289ae265-334e-33e6-5aef-38f1e9dace3e}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{289ae265-334e-33e6-5aef-38f1e9dace3e}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1f194c7e-9ffc-4e90-840a-2d35a67ed56e}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1f194c7e-9ffc-4e90-840a-2d35a67ed56e}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{f90b9dbf-e0c7-0d23-207c-6ae1108c8b3f}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{f90b9dbf-e0c7-0d23-207c-6ae1108c8b3f}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{e7d62400-3ad3-8c46-6ef2-e4d958fb7b2b}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{e7d62400-3ad3-8c46-6ef2-e4d958fb7b2b}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01138b5a-a439-169f-10ea-9b5cb3140889}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01138b5a-a439-169f-10ea-9b5cb3140889}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8614f403-0dba-4040-f8ed-c2c7e2451b1b}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8614f403-0dba-4040-f8ed-c2c7e2451b1b}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5428bf55-b24c-0935-cc3f-abadaf15dc5f}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5428bf55-b24c-0935-cc3f-abadaf15dc5f}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

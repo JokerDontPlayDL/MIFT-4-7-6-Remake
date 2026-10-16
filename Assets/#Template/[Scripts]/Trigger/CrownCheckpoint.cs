@@ -1,14 +1,15 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DancingLineFanmade.Level;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 
 namespace DancingLineFanmade.Trigger
 {
-    [DisallowMultipleComponent, RequireComponent(typeof(Checkpoint))]
-    public class Crown : MonoBehaviour
+    [DisallowMultipleComponent]
+    public class CrownCheckpoint : Checkpoint
     {
+        [Title("Crown Settings(这三个别乱动）")]
         public GameObject crownObject;
         public GameObject crownEffect;
         public GameObject crownIcon;
@@ -16,31 +17,24 @@ namespace DancingLineFanmade.Trigger
         private MeshRenderer crownRenderer;
         private SpriteRenderer iconRenderer;
         private GameObject effectObject;
-        private Vector3 iconPos;
-        private Vector3 targetPos;
-        private Color crownColor;
         private Color iconColor;
-        private bool revived = false;
-
-        private Player player;
+        private bool revived;
 
         private ParticleSystem crownAura;
         private readonly List<Tween> auraTweens = new List<Tween>();
         private Tween crownTween;
-        private const float auraTweenDuration = 1.25f;
+        private const float AuraTweenDuration = 1.25f;
         private bool taken;
-        private bool usedParticalDisappear;
-
-        void Start()
+        private bool usedParticleDisappear;
+        
+        new void Start()
         {
+            base.Start();
+            
             crownRenderer = crownObject.GetComponent<MeshRenderer>();
             iconRenderer = crownIcon.transform.GetChild(0).GetComponent<SpriteRenderer>();
-            player = Player.Instance;
-            crownColor = crownRenderer.material.color;
-            iconPos = crownIcon.transform.position;
 
             iconRenderer.color = new Color(iconRenderer.color.r, iconRenderer.color.g, iconRenderer.color.b, 0f);
-            targetPos = iconPos + Vector3.up * 5f;
 
             InitParticles();
         }
@@ -102,29 +96,30 @@ namespace DancingLineFanmade.Trigger
             AnimateCrown(true);
         }
 
-        public void AnimateCrown(bool show)
+        private void AnimateCrown(bool show)
         {
-            crownTween = iconRenderer.DOFade(show ? 1 : 0, auraTweenDuration / 4f);
-            crownTween.SetEase(Ease.OutSine);
+            crownTween = iconRenderer.DOFade(show ? 1 : 0, AuraTweenDuration / 4f);
+            crownTween.SetEase(Ease.OutSine).SetDelay(0.2f);
             crownTween.OnComplete(() =>
             {
                 crownTween.Kill();
                 crownTween = null;
             });
 
-            if (!show && !usedParticalDisappear && crownAura != null)
+            if (!show && !usedParticleDisappear && crownAura != null)
             {
-                var systems = crownAura.GetComponentsInChildren<ParticleSystem>();
+                crownAura.GetComponentsInChildren<ParticleSystem>();
                 crownAura.Play();
 
-                usedParticalDisappear = true;
+                usedParticleDisappear = true;
 
-                crownAura.transform.DOMoveY(crownAura.transform.position.y + 10f, auraTweenDuration / 1f).SetEase(Ease.Linear);
+                crownAura.transform.DOMoveY(crownAura.transform.position.y + 10f, AuraTweenDuration / 1f).SetEase(Ease.Linear);
             }
         }
 
-        public void TriggerEnter()
+        public new void EnterTrigger()
         {
+            base.EnterTrigger();
             if (taken) return;
             //taken = true;
 
@@ -144,17 +139,17 @@ namespace DancingLineFanmade.Trigger
                     crownAura.Play();
 
                     var pos = crownIcon.transform.position;
-                    auraTweens.Add(crownAura.transform.DOMoveX(pos.x, auraTweenDuration));
+                    auraTweens.Add(crownAura.transform.DOMoveX(pos.x, AuraTweenDuration));
                     auraTweens[^1].SetEase(Ease.InOutSine);
-                    auraTweens.Add(crownAura.transform.DOMoveZ(pos.z, auraTweenDuration));
+                    auraTweens.Add(crownAura.transform.DOMoveZ(pos.z, AuraTweenDuration));
                     auraTweens[^1].SetEase(Ease.InOutSine);
-                    auraTweens.Add(crownAura.transform.DOMoveY(pos.y + 5f, auraTweenDuration / 2f));
-                    auraTweens[^1].SetEase(Ease.InSine);
+                    auraTweens.Add(crownAura.transform.DOMoveY(pos.y + 5f, AuraTweenDuration / 2f));
+                    auraTweens[^1].SetEase(Ease.InSine).OnComplete(ShowSpirit);
 
-                    Tweener tween = crownAura.transform.DOMoveY(pos.y, auraTweenDuration / 2f);
+                    Tweener tween = crownAura.transform.DOMoveY(pos.y, AuraTweenDuration / 2f);
                     tween.SetEase(Ease.OutSine);
-                    tween.SetDelay(auraTweenDuration / 2f);
-                    tween.OnStart(ShowSpirit);
+                    tween.SetDelay(AuraTweenDuration / 2f);
+                    // tween.OnComplete(ShowSpirit);
                     auraTweens.Add(tween);
                     auraTweens[0].OnComplete(ClearAuraTweens);
                 }
@@ -166,16 +161,19 @@ namespace DancingLineFanmade.Trigger
                     });
                 }
             }
-            player.CrownCount++;
+
+            Player.Instance.CrownCount++;
         }
 
-        public void Revival()
+        internal override void Revival()
         {
+            Debug.Log("皇冠");
+            base.Revival();
             if (revived)
                 return;
             if (!revived)
             {
-                usedParticalDisappear = false;
+                usedParticleDisappear = false;
 
                 effectObject = Instantiate(crownEffect, crownIcon.transform.position, Quaternion.Euler(Vector3.zero));
 
@@ -187,7 +185,7 @@ namespace DancingLineFanmade.Trigger
                     crownAura.Play();
 
                     float disappearDuration = 1f;
-                    Vector3 endPos = effectObject.transform.position + Vector3.up * 3.5f;
+                    Vector3 endPos = effectObject.transform.position + Vector3.up * 5f;
 
                     effectObject.transform.DOMove(endPos, disappearDuration).SetEase(Ease.OutSine);
 
